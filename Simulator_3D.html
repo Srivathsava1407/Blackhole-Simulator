@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Black Hole 3D Simulator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="Style.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+    </script>
+    <script type="module" src="Script.js" defer></script>
+  </head>
+  <body>
+    <section id="wrap">
+      <div id="sceneHolder">
+        <div id="loading">LOADING SIMULATION...</div>
+      </div>
+      <div id="panel">
+        <div>
+          <h1>EVENT HORIZON // 3D</h1>
+          <p class="sub">accretion disk &amp; gravity well</p>
+        </div>
+
+        <div class="group">
+          <p id="hint">Drag to <b>orbit</b> the camera. Scroll to <b>zoom</b>.</p>
+        </div>
+
+        <div class="group">
+          <div class="row"><span>Black hole mass</span><span class="val" id="mVal">1.0×</span></div>
+          <input type="range" id="mass" min="0.5" max="2.5" step="0.05" value="1">
+
+          <div class="row"><span>Disk speed</span><span class="val" id="sVal">1.0×</span></div>
+          <input type="range" id="speed" min="0.1" max="3" step="0.05" value="1">
+        </div>
+
+        <div class="group">
+          <button class="action" id="resetBtn">RESET CAMERA</button>
+        </div>
+      </div>
+      <button id="settingsBtn" aria-label="Toggle settings" title="Settings">⚙</button>
+    </section>
+  </body>
+</html>

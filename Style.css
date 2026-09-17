@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap');
+
+:root{
+    --bg: #05060a;
+    --panel: #0d0f1a;
+    --line: #1e2233;
+    --text: #dfe3f0;
+    --muted: #7a80a0;
+    --accent: #ff8a3d;
+    --accent2: #5ec8ff;
+}
+*{ box-sizing: border-box; }
+
+html,body{
+    margin:0; padding:0; background:var(--bg); color:var(--text);
+    font-family: 'Open Sans', 'Courier New', ui-monospace, monospace;
+    font-weight: 400;
+    height:100%; overflow:hidden;
+}
+
+#wrap{
+    display:flex; height:100vh; position:relative;
+}
+
+#sceneHolder{
+    flex:1; position:relative;
+}
+
+#sceneHolder canvas{
+    display:block;
+}
+
+/* ---------- floating translucent settings panel ---------- */
+#panel{
+    width:260px;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    height: calc(100vh - 32px);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(13,15,26,0.6);
+    backdrop-filter: blur(0.5px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+    padding:20px 18px;
+    display:flex; flex-direction:column; gap:18px;
+    overflow-y:auto;
+    z-index:20;
+    transform: translateX(calc(100% + 32px));
+    transition: transform 0.35s ease;
+}
+
+#panel.open{
+    transform: translateX(0);
+}
+
+/* ---------- settings toggle button ---------- */
+#settingsBtn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: rgba(13,15,26,0.65);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: var(--text);
+    font-size: 20px;
+    display:flex; align-items:center; justify-content:center;
+    cursor: pointer;
+    z-index: 21;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+#settingsBtn:hover{
+    border-color: var(--accent2);
+    color: var(--accent2);
+    transform: scale(1.06);
+}
+
+#settingsBtn.open{
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+h1{
+    font-size:15px; letter-spacing:0.5px; margin:0 0 2px 0; font-weight:700; color:var(--text);
+}
+
+.sub{
+    font-size:11px; color:var(--muted); line-height:1.5; margin:0;
+}
+
+.group{
+    display:flex; flex-direction:column; gap:8px; border-top:1px solid var(--line); padding-top:14px;
+}
+
+.row{
+    display:flex; justify-content:space-between; font-size:11px; color:var(--muted);
+}
+
+.row span.val{
+    color:var(--accent2);
+}
+
+input[type=range]{
+    width:100%; accent-color: var(--accent);
+}
+
+button.action{
+    background:transparent; border:1px solid var(--line); color:var(--text);
+    padding:8px 10px; font-size:11px; cursor:pointer; font-family:inherit;
+}
+
+button.action:hover{
+    border-color: var(--accent2); color: var(--accent2);
+}
+
+#hint{
+    font-size:11px; color:var(--muted); line-height:1.6;
+}
+
+#hint b{
+    color: var(--text);
+}
+
+#loading{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    color:var(--muted); font-size:12px; letter-spacing:1px; z-index:5; background:var(--bg);
+}
